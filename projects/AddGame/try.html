@@ -1,0 +1,41 @@
+ <html>
+<head>
+  <title>add as much as u can </title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.16/angular.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <script type="text/javascript" src="script.js"></script>
+</head>
+
+ <body ng-app="app">
+
+ <div ng-controller="HomeCtrl">
+    <div class="motherBox" ng-repeat="n in news">
+      <div class="childBox" class="col-md-{{boxSpan}} box">
+        <a href="#" class="thumbnail">
+          <img src="{{holderLink}}" height="200px" alt="100x100">
+          <p class="tBlock"> {{n.title}} </p>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+
+<script type="text/javascript">
+
+var app=amgular.module('app',[]);
+
+app.controller('HomeCtrl', ['$scope', '$http', function($scope,$http) {
+  $http.get('news/abc.json').success(function(data) {
+    $scope.news = data;
+  });
+  $scope.holderSize = 150;
+  $scope.holderLink = 'http://placehold.it/'+$scope.holderSize+'x'+$scope.holderSize;
+  $scope.boxSpan = getRandomSpan();
+
+  function getRandomSpan(){
+    return Math.floor((Math.random()*6)+1);
+  };
+}]);
+</script>
