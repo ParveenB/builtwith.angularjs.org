@@ -2,6 +2,17 @@
   "featured": "YouTube on PS3",
   "projects": [
   {
+  "name": "Add Game",
+  "thumb": "AddGame/thumb.png",
+  "desc": "Add as much as you can",
+  "submitter": "ParveenB",
+  "submissionDate": "2015-06-24",
+  "tags": [
+    "Demo",
+    "Game",
+    "No jQuery"
+  ]
+},  {
     "name": "APWGL",
     "thumb": "apwgl/thumb.png",
     "desc": "Fan made ARTPOP WebGL App. Renders WebGL to Gif.",
