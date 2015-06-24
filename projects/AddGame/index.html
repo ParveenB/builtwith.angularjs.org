@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add as much as u can </title>
+	<link rel="shortcut icon" href="add.png" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.16/angular.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<script type="text/javascript" src="script.js"></script>
+	</head>
+<body ng-app="addapp">
+<div class="container">
+ 
+	<div ng-controller="addctrl" class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<img class="icon pull-left" src="add.png">
+				<h2 class="heading pull-left">ADD AS MUCH YOU CAN</h2>
+      		</div>
+      	</div>
+      	<div class="row">
+      		<div class="col-md-6 pull-left">
+             <div ng-hide="showDetails">
+             	<div class="col-md-6">
+                   <input type="text" class="panel-body" ng-model="num1" placeholder="Enter Your no." numbers-only="numbers-only" >
+                </div>
+                <div class="col-md-6">
+                 	<button class="panel-body btn btn-primary" ng-disabled="!num1" ng-click="a(num1)">click to start</button><br/>
+                </div>
+             </div>
+             </div>
+             <div class="col-md-6 pull-right">
+             	<div ng-hide="showDetails" class="jumbotron menu_bar">
+             		<h3>Instructions</h3>
+             		<ol>
+             			<li>Enter your desired number to start the game.</li>
+             			<li>Until you are playing good , the game continues.</li>
+             			<li>Once you are wrong the game terminates.</li>
+             		</ol>
+             		<p>!!!!happy playing!!!</p>
+             	</div>
+             </div>
+        </div>
+    
+
+    <div class="row jumbotron container bg_nice"  ng-show="showDetails">
+            <div class="col-lg-4 col-md-4">
+               <h2>Your number</h2>
+               <input type="text" class="panel-body" ng-model="num1" ng-disabled="num1">
+            </div>
+        
+            <div class="col-lg-4 col-md-4">
+              <h2>Random Number</h2>
+              <input type="text" class="panel-body" ng-model="num2" ng-init="num2=10" ng-disabled="num2">
+            </div>
+
+             <div class="col-lg-4 col-md-4" ng-hide="hideit">
+              <h2>Your Answer</h2>
+              <input type="text" class="panel-body" ng-keydown="($event.which === 13 || $event.which === 32) && ans(num1,num2)"  ng-model="result"placeholder="press enter after submit">
+             </div>
+
+             <h1 class="score_heading">Score<span class="score"> {{f}}</span></h1>		
+          <a href="app.html"><button class="btn btn-primary" ng-show="playagain">PLAY AGAIN!!!</button></a>
+
+    </div>
+   			<div ng-show="comment">
+   			    <h2>nice !! Your Last Answer is <span class="score">{{so}}</span></h2>
+   			</div><span ng-bind="message" class="loose"></span> 
+    					 
+  </div>
+</div>
+</body>
+</html>
+<!-- <script type="text/javascript">
+	var addapp=angular.module('addapp',[]);
+	addapp.controller('addctrl', ['$scope', function($scope){
+           $scope.num2="10";         
+			$scope.add=[];
+                    console.log($scope.num2);
+				$scope.ans=function(num1,num2)
+				{
+
+
+					$scope.check=parseInt(num2)+parseInt(num1);
+					console.log($scope.check);
+					if($scope.check==$scope.result)
+					{
+							$scope.add.push($scope.check);
+								alert('true');
+					}
+
+				}
+
+
+	}]);
+</script> -->
+
+
+
+
+
+
+
+<style type="text/css">
+	.container
+	{
+		padding-top: 40px;
+	}
+	
+	.score{
+		 color:green;
+	}
+	.loose
+	{
+		color: red;
+		font-size: 55px;
+	}
+	.icon{
+			width:10%;
+	}
+	.bg_nice{
+		background-color: #72DCFF;
+		border:6px solid #0099CC;
+		box-shadow: 10px 10px 5px #888888;
+	}
+	.bg_nice h2{
+		font-size: 24px;
+  		text-shadow: 2px 2px #55A9A3;
+  		color: #00688B;
+	}
+	.heading{
+		color:#0099CC;
+  		padding-left:10px;
+	}
+	.score_heading{
+		font-size: 40px !important;
+	}
+	.score{
+		color:#00688B;;
+	}
+	.menu_bar{
+		background-color: #8FDEF7;
+		border: 1px solid #63D1F4;
+		width: 70%;
+	}
+</style>
